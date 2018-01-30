@@ -58,9 +58,9 @@
 \end{flushright}
 \rule[1ex]{\textwidth}{.1pt}
 
-You may \textit{not} use your books, notes, graphing calculator, phones or any other internet devices on this exam.\\
+You may \textit{not} use your books, notes, graphing calculator, phones or any other internet devices on this exam. Please show all work clearly and legibly.\\
 
-You are \textbf{required} to show your work on each problem on this quiz. If you are unable to demonstrate your answer in full rigor, supporting evidence may possibly be redeemed for partial credit.\\
+%You are \textbf{required} to justify your answers rigorously on each problem on this quiz. Supporting evidence and/or informal justification may be redeemed for partial credit.\\
 \hspace*{12cm}\begin{minipage}[t]{2.3in}
 \vspace{0pt}
 %\cellwidth{3em}
@@ -95,33 +95,38 @@ You are \textbf{required} to show your work on each problem on this quiz. If you
 %	\end{cases}}$\hfill $I=(-3,8)$
 %\end{parts}
 %\end{changemargin}
-\question[4] Let $f(x)=3\cos(\pi x)-e^x$. Show that $f$ has a root in the interval $[0,1]$. State explicitly which theorem you are using (if applicable) and why it is appropriate to apply in this situation.
-
+\question \vspace*{-120pt}\begin{changemargin}{0pt}{137.4803pt}For each of the functions listed, identify any points of discontinuity. State whether the function is continuous from the left, from the right, or neither at each point of dicontinuity.
+\begin{parts}
+	\part[5] $$f(x)={\frac{x^2}{x^2-3x-10}}$$
+	\vspace{5.8cm}
+	\part[5]\begin{equation*}
+		g(x)=\begin{cases}
+		x&x<1\\
+		x^2& 1\leq x \leq 2\\
+		x^3 & 2<x
+		\end{cases}
+	\end{equation*} 
+\end{parts}
+\end{changemargin}
 % Question with parts
 \newpage
 \addpoints
-\question[6] Sketch a graph $y=f(x)$ for a function $f$ satisfying \textit{all} of the following properties (you do not need to provide a formula for $f$ unless you want to):\\
-$\displaystyle\lim_{x\to-\infty}f(x)=-3$,~ $\displaystyle\lim_{x\to -1^+}f(x)=-2$,~ $\displaystyle\lim_{x\to 0}f(x)=-\infty$,~ $\displaystyle\lim_{x\to 2}f(x)=3$,~ $f(2)=6$,\newline $\displaystyle\lim_{x\to \infty} f(x)=2$,~ there are only two real numbers at which $f$ is \textit{not} continuous.
-
-\vspace{2cm}
-
-\begin{tikzpicture}
-\begin{axis}[my style, xtick={-7,...,7}, ytick={-7,...,7},
-xmin=-8, xmax=8,  ymin=-8, ymax=8]
-\end{axis}
-\end{tikzpicture}
-
+\question Evaluate the limit or state with justification that it does not exist. 
+\begin{parts}
+	\part[5]$$\lim_{x\to \infty}\frac{(x^2+1)(1-3x)}{1-2x-2x^2+2x^3}$$ \vspace{3.5in}
+\part[5] $${\lim_{x\to \infty} \frac{\sin^2(x)}{2x^2+1}}$$
+\end{parts}
 %\vskip70mm
 %\addpoints
 %\question
 %%\noaddpoints
-%Evaluate the following limits. Justify your response carefully and fully. \begin{parts}
+%Evaluate the following limits. Justify your response carefully and fully. 
 %\part[2] $\displaystyle{\lim_{x\to \infty} \frac{\sin^2(x)}{2x^2+1}}$
 %\vspace{1.3in}
 %\part[2] $\displaystyle{\lim_{x\to -\infty} \frac{3x^3+2x-1}{\abs{x^3+2x^2+1}}}$ 
 %\end{parts}
 %%\addpoints
-
+\addpoints
 
 \end{questions}
 \end{document}
