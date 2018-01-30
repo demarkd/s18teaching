@@ -1,0 +1,252 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage[inline]{enumitem}
+\usepackage{multicol}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}content...
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+%\newcommand{\dis}[1]{\begin{align*}
+%	#1
+%	\end{align*}}
+\newcommand{\dis}[1]{$\displaystyle{#1}$}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size \dis{\tan (\pi/6)}of the brackets, and the ake no more than 5 minutes on question 0}
+%%\prob{0}\textbf{Oops! Looks like the American dollar went belly-up last week, and as a result, society has completely collapsed across the globe!\footnote{Maybe next time, consider using something less volatile as the world's reserve currency\textemdash for now though, tough luck.} Eventually, maybe civilization will rebuild, but for now, it's total chaos\textemdash there's no longer such thing as currency, half the city is on fire, and the police and army have both fractured into a complicated web of warring factions. You and your group have to band up to survive. In the space below, determine a) what your top priorities for survival should be in the immediate term and b) what role each member will play for your team.}
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%content...
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+%\newcommand*\pFqskip{8mu}
+%\catcode`,\activecontent...
+%\newcommand*\pFq{\begingroup
+%	\catcode`\,\active
+%	\def ,{\mskip\pFqskip\relax}%
+%	\dopFq
+%}
+%\catcode`\,12
+%\def\dopFq#1#2#3#4#5{%
+%	{}_{#1}F_{#2}\biggl(\genf\dis{\tan (\pi/6)}rac..{0pt}{}{#3}{#4}|#5\biggr
+%	)%
+%	\endgroup
+%}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{content...
+%       <5> <6> <7> <8> <9> <\dis{\tan (\pi/6)}10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}ake no more than 5 minutes on question 0}
+%%\prob{0}\textbf{Oops! Looks like the American dollar went belly-up last week, and as a result, society has completely collapsed across the globe!\footnote{Maybe next time, consider using something less volatile as the world's reserve currency\textemdash for now though, tough luck.} Eventually, maybe civilization will rebuild, but for now, it's total chaos\textemdash there's no longer such thing as currency, half the city is on fire, and the police and army have both fractured into a complicated web of warring factions. You and your group have to band up to survive. In the space below, determine a) what your top priorities for survival should be in the immediate term and b) what role each member will play for your team.}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}content...
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem*{theorem*}{Theorem}[section]
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+
+%FINAL
+\newcommand{\due}{3 October 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{Worksheet for 10/3\textemdash David's Solutions}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Groupwork 10/3/17}
+\chead{\due}
+\lhead{MATH 1271-012\&016}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}inparaenum
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}\dis{\tan (\pi/6)}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\input ArtNouvc.fd
+\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+\newcommand{\ansl}{~\underline{\hspace{1.5cm}}}
+%\usepackage{paralist}
+\begin{document}
+{\bf \Large Take no more than 5 minutes on question 0\textellipsis}
+\prob{0}\textbf{Oops! Looks like the American dollar went belly-up last week, and as a result, society has completely collapsed across the globe!\footnote{Maybe next time, consider using something less volatile as the world's reserve currency\textemdash for now though, tough luck.} Eventually, maybe civilization will rebuild, but for now, it's total chaos\textemdash there's no longer such thing as currency, half the city is on fire, and the police and army have both fractured into a complicated web of warring factions. You and your group have to band up to survive. In the space below, determine a) what your top priorities for survival should be in the immediate term and b) what role each member will play for your team.}\vspace{4cm}
+
+		\prob{1}{(Pre-calc review) Each of the following prompts corresponds to exactly one of the options from the \say{answer bank.} Each answer in the answer bank corresponds to at most one prompt. Match answers to prompts! \textbf{!!!DO NOT USE A CALCULATOR OR LOOK UP ANY FORMULAS BESIDES THE ONES GIVEN!!!}}\newline
+		\subsection*{Formulas \& Definitions}
+		
+		$\tan(x)=\frac{\sin(x)}{\cos(x)}$,
+		$	\sec(x)=\frac{1}{\cos(x)}$,
+		$	\csc(x)=\frac{1}{\sin(x)}$,
+		$	\cot(x)=\frac{1}{\tan(x)}$,
+$1=\cos^2x+\sin^2x$
+
+		\subsection*{Round 1}
+		\begin{enumerate}
+			\item An equation giving a circle of radius 2 centered at $(2,3)$:\ansl
+			\item An equation giving a line perpendicular to the line between $(1,0)$ and $(5,3)$:\ansl
+			\item \dis{\tan (\pi/6)-\cot (\pi/6)}:\ansl
+			\item An equation giving a line which intersects the parabola $y=x^2$ \textit{exactly} once:\ansl
+			\item \dis{\frac{\ln32+\ln2}{\ln4}}:\ansl
+			\item An equation giving a circle of radius 4 centered at $(-2,-3)$:\ansl
+			\item A solution to the equation $y=x^2+\frac{2}{3}x-\frac{53}{6}$: \ansl
+			\item \dis{\frac{\sin{\pi/2}}{\cos{\pi/3}}}: \ansl
+		\end{enumerate}
+		\textit{\textbf{Answer Bank:}}
+		\fbox{\begin{minipage}{40em}
+				\begin{enumerate*}[label=\hspace{.35cm}\textbf{\textit{\Alph*)\hspace{.05cm}}}]
+					\item \dis{y=-\frac{4}{3} x+\frac{6}{5}} \item \dis{(x-2)^2+(y-3)^2=16}\item \dis{y=-\frac{3}{4}x+\frac{6}{8}} \item 3\newline\item \dis{(x-2)^2+(y-3)^2=4} \item \dis{\frac{\sqrt{3}}{3}}\item \dis{(x+2)^2+(y+3)^2=2}\item 2 \item \dis{\frac{-2}{\sqrt{3}}} \item \dis{y=\frac{4}{3}x-\frac{1}{9}} \item \dis{(x+2)^2+(y+3)^2=16} \item\dis{ \frac{3}{\sqrt{3}}} \item \dis{\sqrt{6}-\frac{1}{3}}
+				\end{enumerate*}
+		\end{minipage}}\newpage
+		\subsection*{Round 2}
+	\begin{enumerate}
+		\item $\abs{\tan x}$: \ansl
+		\item \dis{\frac{1-2\cos^2x}{\cos^2x-\sin^2x}}
+		\item \dis{\frac{\cos^2(x)-\sin^2(x)}{2\cos^2(x)-1}}: \ansl
+		\item $\abs{\cot x}$: \ansl
+		\item \dis{\frac{-\cos^2x}{\sin x-1}}: \ansl
+		\item $\cot x-\sin x + \sin^3 x$: \ansl
+		\item $\abs{\csc x}$: \ansl
+	\end{enumerate}
+	\textit{\textbf{Answer Bank:}}
+	\fbox{\begin{minipage}{40em}
+			\begin{enumerate*}[label=\hspace{.35cm}\textbf{\textit{\Alph*)\hspace{.05cm}}}]
+			\item \dis{\frac{1-\cos x}{\sin x\sec x}}\item\dis{ \sqrt{\frac{1+\tan^2x}{\tan^2x}}}	\item 1 \item \dis{\sqrt{1-\sec^2(x)}} \item \dis{\frac{\sqrt{1-\sin^2(x)}}{\sqrt{1-\cos^2(x)}}}\newline \item $\sin x+1$
+			\end{enumerate*}
+	\end{minipage}}\vspace{5cm}
+\prob{2}\prt{1}
+Let $x_0=1$, and $f(x)=x^2-2x$. Compute the slope of the secant line between $x_0$ and $x_1=5$, $x_2=2$, $x_3=1.5$, $x_4=1.1$ and $x_5=1.01$. Use this to find an estimate for the slope of the tangent line to $y=f(x)$ at $x_0$.\vspace{4cm}
+\prt{2} Use the same techniques to estimate the slope of the tangent line for $f(x)=x^3$ at $x_0=1$.
+
+
+\end{document}
