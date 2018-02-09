@@ -43,6 +43,7 @@
 \newcommand{\tb}{\tau_\beta}
 \newcommand{\hth}{\hat{\theta}}
 \newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
 \newcommand{\prompt}[1]{\begin{prompt*}
 		#1
 \end{prompt*}}
@@ -148,19 +149,19 @@
 \newtheorem*{notation*}{Notation}
 
 %FINAL
-\newcommand{\due}{3 October 2017} 
+\newcommand{\due}{9 February 2018} 
 \RequirePackage{geometry}
 \geometry{margin=.7in}
 \usepackage{todonotes}
-\title{Practice Test for Midterm I}
+\title{Practice Worksheet for Midterm I}
 \author{David DeMark}
 \date{\due}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Practice Test I}
+\rhead{Practice Worksheet I}
 \chead{\due}
-\lhead{MATH 1271-012\&016}
+\lhead{MATH 1271 Spring 2018}
 \cfoot{\thepage}
 % %%
 %%
@@ -221,15 +222,15 @@ x^2&x<-5\\
 	x^3 & 2\leq x
 	\end{cases}
 	\end{equation*}\vspace{4.5cm}
-	\prob{5} Show that $f(x)$ achieves the value $f(c)=1/2$ for some $0\leq c \leq 5$. State which theorem you are using.
+	\prob{5} Show that $f(x)$ achieves the value $f(c)=1/2$ for some $0\leq c \leq 5$. State which theorem you are using. Does $f(x)$ have a root anywhere?
 	$$f(x)=\frac{1}{x-2}$$\vspace{6cm}
 	\begin{center}{\LARGE\textbf{\emph{Definition of Derivative}}}\end{center}
-	\prob{6} Use the definition of the derivative to compute $f'(x)$.
+	\prob{6} Use the (limit) definition of the derivative to compute $f'(x)$.
 	\prt{1} $$f(x)=5x-3$$\vspace{4cm}
 	\prt{2} $$f(x)=\sqrt{1-2x}$$\vspace{5cm}
 	\prt{3} $$f(x)=\frac{3x+1}{x-1}$$\newpage
 		\begin{center}{\LARGE\textbf{\emph{Rules of Differentiation}}}\end{center}
-\prob{7} Compute the derivative $f'$ of $f(x)$. Use that to find the equation for $T(x)$, the tangent line to $y=f(x)$ at $x=x_0$
+\prob{7} Compute the derivative $f'$ of $f(x)$ (using the rules of differentiation, \textit{not} the limit-definition). Use that to find the equation for $T(x)$, the tangent line to $y=f(x)$ at $x=x_0$
 \prt{1} $$f(x)=x^3+10x\hspace{6cm} x=3$$\vspace{4.5cm}
 \prt{2} $$f(x)=(x^2+3x)e^x\hspace{6cm}x_0=2$$\vspace{4.5cm}
 \prt{3} $$f(x)=\frac{x^2\cos(x)}{x+1}\hspace{6cm}x_0=\pi$$\vspace{4.5cm}
@@ -250,6 +251,6 @@ $$	\begin{tabular}{c|cccc}
 \prt{1} $f'(2)=$\vspace{3cm}
 \prt{2} $f(2)=$\vspace{3cm}
 \prt{3} $f'(3)=$\vspace{3cm}
-\prt{4} $$\restr\ddx{x}$$
+\prt{4} $\displaystyle\restr{\ddx{x}\left(\frac{f(x)}{g(x)}\right)}{x=1}=$
 
 \end{document}
