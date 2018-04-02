@@ -1,0 +1,372 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align*}
+	#1
+	\end{align*}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem*{theorem*}{Theorem}[section]
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+
+%FINAL
+\newcommand{\due}{3 October 2017} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{Practice Test for Midterm I}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Practice Test I}
+\chead{\due}
+\lhead{MATH 1271-012\&016}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\input ArtNouvc.fd
+\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+\newcommand{\resp}[1]{\begin{proof}[Response]{#1}\end{proof}}
+\begin{document}
+	\maketitle
+
+\begin{center}{\LARGE\textbf{\emph{Limits, finite and infinite}}}\end{center}
+	\prob{1} compute the following limits:
+	\prt{1} $\displaystyle{\lim_{x\to 2} \frac{x^2-4}{x^2+3x-10}=}$
+	\begin{proof}[Response]
+First, let's factor: 
+$${\lim_{x\to 2} \frac{x^2-4}{x^2+3x-10}=\lim_{x\to 2}\frac{(x+2)(x-2)}{(x+5)(x-2)}}=\lim_{x\to 2}\frac{x+2}{x+5}$$
+Now, as our denominator does not equal $0$ when we plug our value in, we can do just that to see that the limit is $\frac{2+2}{2+5}=\frac{4}{7}$
+	\end{proof}
+	\prt{2} $\displaystyle{\lim_{x\to 0} \frac{x^2-2x+1}{x^3-6}=}$
+	\begin{proof}[Response]
+		This one is easy--if we plug in $x=0$, our denominator is nonzero to start with! Thus, $$\lim_{x\to 0} \frac{x^2-2x+1}{x^3-6}=\frac{0^2-2*0+1}{0^3-6}=\frac{-1}{6}$$
+		\end{proof}
+	\prt{3} $\displaystyle{\lim_{x\to -4} \frac{\abs{x^2+8x+12}}{x+2}=}$\begin{proof}[Response]
+	Here, we notice that $f(x)=x^2+8x+12=(x+2)(x+6)$ is positive when $x<-6$, negative when $-6<x<-2$ and positive again when $x>-2$. As we're taking a limit at $-4$, we can focus our attention at $-6<x<-2$ (because we only care about the area immediately surrounding $x=-4$), so in the region we care about, $\abs{f(x)}=-f(x)$. The denominator is non-zero when we plug in $x=-4$, so once we know what we're looking at up top, we are golden. Putting it together:
+	
+	$$\lim_{x\to -4} \frac{\abs{x^2+8x+12}}{x+2}=\lim_{x\to -4} \frac{-(x^2+8x+12)}{x+2}=\frac{-(16-32+12)}{(-4+2)}=\frac{4}{-2}=-2$$\end{proof}
+	\newpage
+	\prob{2} Compute more limits
+	\prt{1} $\displaystyle{\lim_{x\to 1^-} \frac{x^2+2}{x^2-1}=}$\resp{Here, we cannot make relevant calculations, and $1^2+2=3\neq 0$ while $1^2-1=0$, so we are looking at an infinite limit of some sort. We're approaching from the left, so we may assume $x<1$. Then, $x^2<1$, so the denominator is negative. However, $x^2+2$ is positive for any real number $x$, so our only possible answer is $\displaystyle{\lim_{x\to 1^-} \frac{x^2+2}{x^2-1}=-\infty}$. In particular, because we have a $0$ denominator with a finite nonzero numerator, we must have a vertical asymptote\textemdash so all that was left for us to do was figure out whether it was positive or negative.}
+	
+	\prt{2}	$\displaystyle{\lim_{x\to \infty} \frac{cos^2(x)}{x+3}=}$\resp{
+Wellp, you know what time it is: squeeze theorem time!:
+
+Recall: \begin{align*}0\leq &\cos^2(x)\leq 1
+\end{align*}
+Now, we can divide through by $x+3$ (note this does NOT reverse the inequality because $x+3$ is positive as $x\to+\infty$), and we get:
+\begin{align*}\frac{0}{x+3}=0\leq &\frac{\cos^2(x)}{x+3}\leq \frac{1}{x+3}
+\end{align*}
+Now, we add in our limits!
+\begin{align*}
+	0=\lim_{x\to \infty}0\leq &\lim_{x\to \infty}\frac{\cos^2(x)}{x+3}\leq \lim_{x\to \infty}\frac{1}{x+3}=0
+\end{align*}
+Thus, the limit is zero!
+}
+	\prt{3} $\displaystyle{\lim_{x\to -\infty} \frac{x^3-2x+2}{4x^3-6}=}$\resp{
+This is a pretty standard horizontal asymptote question. Let's multiply through numerator and denominator by $1/x^3$
+\begin{align*}\lim_{x\to -\infty} \frac{x^3-2x+2}{4x^3-6}=\lim_{x\to-\infty}\frac{1-2x^{-2}+2x^{-3}}{4-6x^{-3}}\end{align*}
+	Now, as $x\to \pm \infty$, $x^{-r}\to 0$, so we can clear out our negative powers.\begin{align*}
+		\lim_{x\to-\infty}\frac{1-2x^{-2}+2x^{-3}}{4-6x^{-3}}&=\frac{1-2(0)+2(0)}{4-6(0)}\\&=\frac{1}{4}
+	\end{align*}
+}\newpage
+	\begin{center}{\LARGE\textbf{\emph{Continuity}}}\end{center}
+	\prob{3} Identify the points $x$ at which $f(x)$ is \emph{not} continuous.
+	\begin{equation*} f(x)=\begin{cases}
+x^2&x<-5\\
+\frac{1}{x^2-9}&-5\leq x<0\\
+\frac{x^2-1}{9e^x}& 0\leq x 
+	\end{cases}
+	\end{equation*}
+	\resp{ SO: First, we need to check each leg of the piecewise for discontinuities. $x^2$ is continuous everywhere by virtue of being a polynomial. Same story for $x^2-1$, and as $9e^x\neq 0$ for all $x$, we have that $\frac{x^2-1}{9e^x}$ is continuous everywhere as well. However, $\frac{1}{x^2-9}=\frac{1}{(x-3)(x+3)}$ is NOT defined at $x=-3$ (as well as $x=3$, but at $x=3$, we've moved on to a different part of the piecewise). This gives us our first discontinuity. What is left is to check at the \say{seams}, that is $x=-5$ and $x=0$. Now, \begin{align*}
+			\lim_{x\to -5^-} f(x)=(-5)^2=25
+	\end{align*}
+but, \begin{align*}f(-5)=\lim_{x\to -5^+}f(x)&=\frac{1}{(-5)^2-9}\\&=\frac{1}{16}\neq 25\end{align*}
+As the left- and right-side limits do not agree at $x=-5$, we can conclude there is a discontinuity there as well. 
+
+Finally, at $x=0$, we have: \begin{align*}
+\lim_{x\to 0^-} f(x)=\frac{1}{0^2-9}=\frac{-1}{9}
+\end{align*}
+and \begin{align*}
+\lim_{x\to 0^+} f(x)=\frac{0^2-1}{9e^0}=\frac{-1}{9}=f(0)
+\end{align*}
+As $\lim_{x\to 0^-}f(x)=\lim_{x\to 0^+}f(x)=f(0)$, we do not have a discontinuity there. We can conclude that the only points of discontinuity are $x=-5$ and $x=-3$.
+}
+
+	\prob{4} Find $a$ and $b$ such that $f(x)$ is continuous everywhere.
+	\begin{equation*}
+	f(x)=\begin{cases}
+	ax+b&x<0\\
+	x^2-a &0\leq x <2\\
+	x^3 & 2\leq x
+	\end{cases}
+	\end{equation*}
+	
+	\resp{First, notice that each of $ax+b$, $x^2-a$, and $x^3$ are continuous everywhere so we again only need to focus on the \say{seams,} now at $x=0$ and $x=2$. Let's start with the latter. We need that $f(2)=\lim_{x\to 2^-}f(x)=\lim_{x\to 2^+}f(x)$, so we write
+		\begin{align*}
+			f(x)&=2^3=8\\
+			\lim_{x\to 2^+}f(x)&=2^3=8\\
+			\lim_{x\to 2^-}f(x)&=2^2-a=4-a
+		\end{align*}
+	Thus, we now have that $8=4-a$, or $a=-4$. That takes care of one of them! Next, let's look at $x=0$. We need that $f(0)=\lim_{x\to 0^-}f(x)=\lim_{x\to 0^+}f(x)$, so we write
+	\begin{align*}
+	f(0)&=0^2-a=0^2+4=4\\
+	\lim_{x\to 0^+}f(x)&=0^2-a=4\\
+	\lim_{x\to 0^-}f(x)&=a(0)+b=b
+	\end{align*}
+	Thus, as the limits need to match up, we have that $b=4$. This gives our final answer of $a=-4$, $b=4$.
+
+}
+	\prob{5} Show that $f(x)$ achieves the value $f(c)=1/2$ for some $0\leq c \leq 5$. State which theorem you are using.
+	$$f(x)=\frac{1}{x-2}$$\resp{
+Well, we could just \emph{find} $c$, but that's not the point of the question\textemdash let's just prove it exists instead.
+
+The intermediate value theorem tells us that if $a<b$ and $f(a)<y^*<f(b)$ (or $f(a)>y^*>f(b)$) AND $f$ is continuous on $[a,b]$, then there must be some $c$ such that $a<c<b$ and $f(c)=y^*$. This is an OBVIOUS STATEMENT, once you parse what it means\textemdash but that's the hard part! Draw a picture or look at the pictures on page 122 (section 2.5) if you're confused.
+
+ANYWAY: we want to find $a,b$ such that $f$ is continuous on $[a,b]$ and $f(a)$ is on the opposite side of $1/2$ from $f(b)$. Note that $f$ has a discontinuity at $x=2$, so we need that $a$ and $b$ are on the same side of $x=2$. By trial and error, we come up with $a=2.5$ and $b=5$. Then $f(a)=2$ and $f(b)=\frac{1}{3}$. As $\frac{1}{3}<\frac{1}{2}<2$, the intermediate value theorem tells us that our desired $c$ does indeed exist, and we are done!
+
+Of course we could have just solved $1/(x-2)=1/2$ to get $c=4$, but that's no fun\textellipsis
+
+}
+	\begin{center}{\LARGE\textbf{\emph{Definition of Derivative}}}\end{center}
+	\prob{6} Use the definition of the derivative to compute $f'(x)$.
+\textbf{Answers given only for parts a,b\textemdash you should be able to use the rules of differentiation to check your result for part c}
+	\prt{1} $$f(x)=5x-3$$
+	\resp{This one's real easy.
+\begin{align*}
+	f'(x)&=\lim_{h\to 0}\frac{(5(x+h)-3)-(5x-3)}{h}\\
+	&=\lim_{h\to 0}\frac{5x+5h-3-5x+3}{h}\\
+	&=\lim_{h\to 0}\frac{5h}{h}=5.
+\end{align*}	
+}
+	\prt{2} $$f(x)=\sqrt{1-2x}$$
+	\resp{
+Well, I guess we should write out the definition of the derivative\textellipsis
+$$f'(x)=\lim_{h\to 0}\frac{\sqrt{1-2(x+h)}-\sqrt{1-2x}}{h}$$
+Now, we multiply by conjugate to simplify things up on the top.	\begin{align*}
+\lim_{h\to 0}\frac{\sqrt{1-2(x+h)}-\sqrt{1-2x}}{h}&=\lim_{h\to 0}\frac{\sqrt{1-2(x+h)}-\sqrt{1-2x}}{h}\left(\frac{\sqrt{1-2(x+h)}+\sqrt{1-2x}}{\sqrt{1-2(x+h)}+\sqrt{1-2x}}\right)\\
+&=\lim_{h\to 0}\frac{(1-2(x+h))-(1-2x)}{h(\sqrt{1-2(x+h)}+\sqrt{1-2x})}\\&=\lim_{h\to 0}\frac{1-2x-2h-1+2x}{h(\sqrt{1-2(x+h)}+\sqrt{1-2x})}\\&=\lim_{h\to 0}\frac{-2h}{h(\sqrt{1-2(x+h)}+\sqrt{1-2x})}\\
+&=\lim_{h\to 0}\frac{-2}{\sqrt{1-2(x+h)}+\sqrt{1-2x}}
+\end{align*}
+Now, since plugging in $h=0$ does not make our denominator 0, we can do exactly that.
+\begin{align*}
+	f'(x)&=\frac{-2}{\sqrt{1-2(x+0)}+\sqrt{1-2x}}\\&=\frac{-2}{2\sqrt{1-2x}}\\&=\frac{-1}{\sqrt{1-2x}}
+\end{align*}
+}
+	
+%	\prt{3} $$f(x)=\frac{3x+1}{x-1}$$\newpage
+		\begin{center}{\LARGE\textbf{\emph{Rules of Differentiation}}}\end{center}
+\prob{7} Compute the derivative $f'$ of $f(x)$. Use that to find the equation for $T(x)$, the tangent line to $y=f(x)$ at $x=x_0$
+\prt{1} $$f(x)=x^3+10x\hspace{6cm} x=3$$\resp{Ok, finding $f'(x)$ is a pretty simple application of the power rule: $f'(x)=3x^2+10$. Now, we need to find the equation for the tangent line $T(x)$. In general, for $T$ being the tangent at $x=x_0$, $T(x)=f'(x_0)(x-x_0)+f(x_0)$. Now, as $x_0=3$, $f(x_0)=3^3+10*3=57$, and $f'(3)=3(3^2)+10=37$. Thus, we get the formula $$T(x)=37(x-3)+57.$$}
+\prt{2} $$f(x)=(x^2+3x)e^x\hspace{6cm}x_0=2$$\resp{
+I believe it is time to catch up with our friend the product rule. We write $f(x)=g(x)h(x)$ with $g(x)=x^2+3x$ and $h(x)=e^x$. Then, $g'(x)=2x+3$ and $h'(x)=e^x$. The product rule gives $f'(x)=g'(x)h(x)+g(x)h'(x)$, so substituting some stuff in gives us \begin{align*}f'(x)&=(2x+3)e^x+(x^2+3x)e^x\\&=e^x(x^2+5x+3)
+\end{align*} 
+Now, for $x_0=2$, we use the same general formula  $T(x)=f'(x_0)(x-x_0)+f(x_0)$. We find $f(2)=(2^2+3(2))e^2=10e^2$ and $f'(2)=e^2(2^2+5(2)+3)=17e^2$. Thus, our formula is $T(x)=17e^2(x-2)+10e^2$.
+}
+\prt{3} $$f(x)=\frac{x^2\cos(x)}{x+1}\hspace{6cm}x_0=\pi$$
+\textbf{I'm not going to write up the whole procedure, but here are solutions if you'd like to check your answer. This problem is perhaps a couple shades more algebraically-intensive than the midterm will likely be.}
+
+\begin{align}
+	f'(x)&=\frac{(x^2+2x) \cos (x)- (x^3+x^2) \sin (x)}{(x+1)^2}\\
+	T(x)&=\left(\frac{1}{(1+\pi )^2}-1\right)(x-\pi)-\frac{\pi^2}{1+\pi}\\
+	&=-\frac{\pi^2+2\pi}{(\pi+1)^2}(x-\pi)-\frac{\pi^2}{1+\pi}\end{align}
+
+\prob{8} Compute the derivative $f'$ of $f(x)$. 
+\prt{1}$$f(x)=\sin(x^2)$$
+\resp{Let $g(x)=\sin(x)$ and $h(x)=x^2$. Then, $g'(x)=\cos(x)$ and $h'(x)=2x$. Chain rule: $f(x)=g(h(x))$, so $f'(x)=h'(x)g'(h(x))=2x\cos(x^2)$.}
+\prt{2} $$f(x)=e^{\cos(x^3-x)}$$
+\resp{
+Let $g(x)=e^x$ and $h(x)=\cos(x^3-x)$. $g'(x)=e^x$, but we'll have to use the chain rule to find the derivative of $h(x)$. Let $j(x)=\cos(x)$ and $k(x)=x^3-x$. Then, $j'(x)=-\sin(x)$ and $k'(x)=3x^2-1$. Since $h(x)=j(k(x))$, $h'(x)=k'(x)j'(k(x))=-(3x^2-1)\sin(x^3-x)$. Now, we can compute that since $f(x)=g(h(x))$, $f'(x)=h'(x)g'(h(x))=-(3x^2-1)\sin(x^3-x)e^{\cos(x^3-x)}$.
+}
+\prt{3} $$f(x)=\frac{1}{\sqrt{x^3-8}}$$
+\resp{Let $g(x)=x^{-1/2}$ and $h(x)=x^3-8$. $g'(x)=\frac{-1}{2x^{3/2}}$ and $h'(x)=3x^2$. Since $f(x)=g(h(x))$, $f'(x)=h'(x)g'(h(x))=\frac{-3x^2}{2({x^3-8})^{3/2}}$}
+
+
+\prob{9} Let $f(x)=g(h(x))$. Compute the following using the below table of values or state that insufficient information is given with justification
+\begin{table}[h!]
+	$$	\begin{tabular}{c|cccc}
+	x&g(x)&h(x)&g'(x)&h'(x)\\\hline
+	1&7&3&8&2\\
+	2&6&1&-2&4\\
+	3&-1&4&-8&-2
+	\end{tabular}$$
+\end{table}
+\prt{1} $f'(2)=$\resp{Note $f'(x)=h'(x)g'(h(x))$, so $f'(2)=h'(2)g'(h(2))$. $h(2)=1$, so this is $f'(2)=h'(2)g'(1)=4*8=32$.}
+\prt{2} $f(2)=$\resp{$f(2)=g(h(2))$. $h(2)=1$, so $f(2)=g(1)=7$.\\(honestly this question was here to make sure you're reading carefully!)}
+\prt{3} $f'(3)=$\resp{$f'(3)=h'(3)g'(h(3))$. $h(3)=4$, so in order to know this, we need to know what $g'(4)$ is. But how on earth would we know that????? (insufficient information is given).}
+\prt{4} $\displaystyle\restr{\ddx{x}\left(\frac{f(x)}{g(x)}\right)}{x=1}=$\resp{The quotient rule says...$$\ddx{x}\frac{f(x)}{g(x)}=\frac{g(x)f'(x)-f(x)g'(x)}{g(x)^2}$$ so evaluating it at $x=1$ gives us \begin{align*}\restr{\ddx{x}\left(\frac{f(x)}{g(x)}\right)}{x=1}&=\frac{g(1)f'(1)-f(1)g'(1)}{g(1)^2}\end{align*}
+We know $g(1)=7$, $f(1)=g(h(1))=g(3)=-1$, and $g'(1)=8$. We need to compute $f'(1)=g'(h(1))h'(1)=g'(3)h'(1)=-16$. Thus, 
+\begin{align*}\restr{\ddx{x}\left(\frac{f(x)}{g(x)}\right)}{x=1}&=\frac{g(1)f'(1)-f(1)g'(1)}{g(1)^2}\\&=\frac{7*(-16)-(-1)(8)}{(7)^2}\\&=\frac{-104}{49}\approx-2.122\end{align*}
+
+}
+
+
+\end{document}

@@ -1,0 +1,163 @@
+% Exam Template for UMTYMP and Math Department courses
+%
+% Using Philip Hirschhorn's exam.cls: http://www-math.mit.edu/~psh/#ExamCls
+%
+% run pdflatex on a finished exam at least three times to do the grading table on front page.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These lines can probably stay unchanged, although you can remove the last
+% two packages if you're not making pictures with tikz.
+\documentclass[11pt]{exam}
+\RequirePackage{amssymb, amsfonts, amsmath,amsthm, mathtools, latexsym, verbatim, xspace, setspace}
+\RequirePackage{tikz, pgflibraryplotmarks}
+
+% By default LaTeX uses large margins.  This doesn't work well on exams; problems
+% end up in the "middle" of the page, reducing the amount of space for students
+% to work on them.
+\usepackage[margin=1in]{geometry}
+
+
+% Here's where you edit the Class, Exam, Date, etc.
+\newcommand{\class}{Math 1271 - Lecture 050 }
+\newcommand{\term}{Spring 2018}
+\newcommand{\examnum}{Quiz IV}
+\newcommand{\examdate}{2/22/18}
+\newcommand{\timelimit}{20 Minutes}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+% For an exam, single spacing is most appropriate
+\singlespacing
+% \onehalfspacing
+% \doublespacing
+
+% For an exam, we generally want to turn off paragraph indentation
+\parindent 0ex
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+%%\usepackage{pgfplots}
+%%\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+%		middle, xlabel={$x$}, ylabel={$y$}, axis equal,width=\textwidth }}
+%	\pgfplotsset{every x tick label/.append style={font=\small, yshift=0.5ex}}
+%	\pgfplotsset{every y tick label/.append style={font=\small, xshift=0.5ex}}
+	\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+	\newcommand{\pydx}[2]{\frac{\partial #1}{\newcommand\partial #2}}
+	\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+	\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+	\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+	\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\begin{document} 
+
+% These commands set up the running header on the top of the exam pages
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{\class}{\examnum\ - Page \thepage\ of \numpages}{\examdate}
+\runningheadrule
+
+\begin{flushright}
+\begin{tabular}{p{2.8in} r l}
+\textbf{\class} & \textbf{Name (Print):} & \makebox[2in]{David DeMark (KEY)\hrulefill}\\
+\textbf{\term} &&\\
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\textbf{Time Limit: \timelimit} & Section & \makebox[2in]{\hrulefill}
+\end{tabular}\\
+\end{flushright}
+\rule[1ex]{\textwidth}{.1pt}
+
+You may \textit{not} use your books, notes, graphing calculator, phones or any other internet devices on this exam. Please show all work clearly and legibly.\\
+
+%You are \textbf{required} to justify your answers rigorously on each problem on this quiz. Supporting evidence and/or informal justification may be redeemed for partial credit.\\
+\hspace*{12cm}\begin{minipage}[t]{2.3in}
+\vspace{0pt}
+%\cellwidth{3em}
+\gradetablestretch{2}
+\vqword{Problem}
+\addpoints % required here by exam.cls, even though questions haven't started yet.	
+\gradetable[v]%[pages]  % Use [pages] to have grading table by page instead of question
+
+\end{minipage}
+%\newpage % End of cover page
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% See http://www-math.mit.edu/~psh/#ExamCls for full documentation, but the questions
+% below give an idea of how to write questions [with parts] and have the points
+% tracked automatically on the cover page.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{questions}
+
+% Basic question
+%\vspace*{-130pt}
+\addpoints
+%\begin{changemargin}{0pt}{137.4803pt} Find the real numbers within the interval $I$ at which $f$ is \emph{not} continuous. State whether $f$ is continuous from the right, the left, or neither.
+%\begin{parts}
+%\part[1] $\displaystyle{f(x)=\frac{1}{x^2+4x-21}}$\hfill $I=(-\infty,\infty)$\vskip1.5mm
+%\part[1] $\displaystyle{f(x)=\frac{\sin{\frac{x}{2}}}{\cos{2x}}}$\hfill $I=[-\pi,\pi]$\vskip1.5mm
+%\part[1] $\displaystyle{f(x)=\begin{cases}2^x&x\leq 3\\-3x+17&3<x\leq 4\\\frac{1}{\sqrt{x-3}}&x>4
+%	\end{cases}}$\hfill $I=(-3,8)$
+%\end{parts}
+%\end{changemargin}
+\question[10] Find an equation for a tangent line to the curve defined by $y^2-x^2-3x+6=0$ at the point $(x_0,y_0)=(2,-2)$.
+\begin{proof}[Response]
+	The tangent line to the curve is given by $$T(x)=m(x-x_0)+y_0\text{ where } m=\restr{\left(\dydx{y}{x}\right)}{(x_0,y_0)}$$ 
+	First we differentiate with respect to both sides:\begin{align*}
+		\ddx{x}(y^2-x^2-3x+6)&=\ddx{x}(0)\\
+		2y\dydx{y}{x}-2x-3&=0
+	\end{align*}
+	Now we solve for $\dydx{y}{x}$:
+	\begin{align*}
+		2y\dydx{y}{x}-2x-3&=0\\
+		\implies 2y\dydx{y}{x}=2x+3\\
+		\implies \dydx{y}{x}=\frac{2x+3}{2y}
+	\end{align*}
+	So to find $m=\displaystyle{\restr{\left(\dydx{y}{x}\right)}{(x_0,y_0)}}$, we just need to plug in $(x_0,y_0)=(2,-2)$:
+	$$\restr{\left(\dydx{y}{x}\right)}{(x_0,y_0)}=\restr{\left(\dydx{y}{x}\right)}{(2,-2)}=\frac{2(2)+3}{2(-2)}=\frac{-7}{4}$$
+	From this we get that $$T(x)=\frac{-7}{4}(x-2)-2=\frac{-7}{4}x+\frac{3}{2}$$
+\end{proof}
+\vspace{.25in}
+\addpoints
+\question Find $y'$ (in terms of $x$ and $y$) for:
+\begin{parts}
+	\part[5]$y=x^{\sqrt{x}}$
+	\begin{proof}[Response]
+		We first rewrite (note that this step can be skipped) then apply natural log to both sides. \begin{align*}y&=\left(e^{\ln(x)}\right)^{\sqrt{x}}\\
+		&=e^{\ln(x)\sqrt{x}}\\
+		\implies \ln(y)&=\ln(x)\sqrt{x}
+		\end{align*}
+		We now differentiate each side w/r/t $x$:
+		$$\ddx{x} \ln(y)=\ddx{x}\left(\ln(x)\sqrt{x}\right)$$
+		To compute $\ddx{x}\ln(y)$, we use the chain rule. We let $f(x)=\ln(x)$ and $g(x)=y$. Then, $f'(x)=\frac{1}{x}$ and $g'(x)=y'$, so$$\ddx{x}\ln(y)=\ddx{x}f(g(x))=g'(x)f'(g(x))=\frac{y'}{y}.$$ We compute the derivative of the other side using the product rule to yield
+	\begin{align*}\frac{y'}{y}&=\frac{\sqrt{x}}{x}+\frac{\ln(x)}{2\sqrt{x}}\\
+	&=\frac{2+\ln(x)}{2\sqrt{x}}\\
+	\implies y'&=\left(\frac{2+\ln(x)}{2\sqrt{x}}\right)y\end{align*} Finally, to put it in terms of $x$, we substitute $y=x^{\sqrt{x}}$ and yield	
+$$	y'=\left(\frac{2+\ln(x)}{2\sqrt{x}}\right)x^{\sqrt{x}}$$\end{proof}
+\vspace{.25in}
+	\part[5] $x=\cos (y^2)$ 
+	\begin{proof}[Response]
+	Don't overthink it! We can put this one in terms of $x$ and $y$, so lets just differentiate each side:$$\ddx{x}x=\ddx{x}\cos(y^2)$$
+	We use the chain rule on the right: we let $f(x)=\cos(x)$ and $g(x)=y^2$. Then, $f'(x)=-\sin(x)$ and $g'(x)=2yy'$. Thus, $$\ddx{x}\cos(y^2)=\ddx{x}f(g(x))=g'(x)f'(g(x))=2yy'(-\sin(y^2)).$$
+	Now we have from differentiating both sides above:
+\begin{align*}1=-2yy'\sin(y^2)\\
+\implies \frac{-1}{2y\sin(y^2)}=y'\end{align*}
+
+(Depending on what you did, there are several possible correct answers to this in mixed terms of $x$ and $y$ which are not obviously the same.)
+	\end{proof}
+\end{parts} 
+%\vskip70mm
+%\addpoints
+%\question
+%%\noaddpoints
+%Evaluate the following limits. Justify your response carefully and fully. 
+%\part[2] $\displaystyle{\lim_{x\to \infty} \frac{\sin^2(x)}{2x^2+1}}$
+%\vspace{1.3in}
+%\part[2] $\displaystyle{\lim_{x\to -\infty} \frac{3x^3+2x-1}{\abs{x^3+2x^2+1}}}$ 
+%\end{parts}
+%%\addpoints
+\addpoints
+
+\end{questions}
+\end{document}
